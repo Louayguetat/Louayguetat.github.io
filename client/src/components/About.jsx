@@ -17,9 +17,7 @@ export default function About() {
           {/* Bio */}
           <div className="about__bio-block">
             <p className="about__bio">{personal.bio}</p>
-            <p className="about__bio">
-              I'm currently working remotely as a Full Stack Engineer at <strong>UpTicker AI</strong> — a US fintech startup — building the full product from frontend to AI pipelines. I'm open to full-time roles in <strong>Europe</strong> (Germany, Netherlands, Sweden, France) or <strong>Asia</strong> (Singapore).
-            </p>
+            <p className="about__bio">{personal.aboutExtra}</p>
             <div className="about__flags">
               <span className="about__flag">🇹🇳 Tunis</span>
               <span className="about__arrow">→</span>

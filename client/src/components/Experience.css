@@ -48,8 +48,8 @@
 .exp__tab--active .exp__tab-company { color: var(--accent); }
 
 .exp__tab-period {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
@@ -58,8 +58,8 @@
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -108,8 +108,8 @@
 }
 
 .exp__period {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
@@ -122,14 +122,14 @@
 
 .exp__current-badge {
   flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--green);
   background: var(--green-dim);
-  border: 1px solid rgba(16,185,129,0.3);
+  border: 1px solid rgba(4, 120, 87, 0.25);
   border-radius: 100px;
   padding: 0.3rem 0.7rem;
 }
@@ -170,11 +170,12 @@
 }
 
 .exp__tech-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
   color: var(--accent);
   background: var(--accent-dim);
-  border: 1px solid rgba(59,130,246,0.2);
+  border: 1px solid rgba(29, 78, 216, 0.2);
   border-radius: 4px;
   padding: 0.25rem 0.6rem;
 }

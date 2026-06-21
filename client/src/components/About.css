@@ -50,8 +50,8 @@
 }
 
 .about__block-title {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -113,8 +113,8 @@
 }
 
 .edu-item__period {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -122,7 +122,7 @@
   font-size: 0.75rem;
   color: var(--amber);
   background: var(--amber-dim);
-  border: 1px solid rgba(245,158,11,0.2);
+  border: 1px solid rgba(180, 83, 9, 0.2);
   border-radius: 4px;
   padding: 0.2rem 0.5rem;
   margin-top: 0.25rem;
@@ -153,8 +153,8 @@
 }
 
 .lang-row__level {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 

@@ -1,73 +1,58 @@
-import React, { useEffect, useState } from 'react';
-import { personal } from '../data/portfolio';
+import React from 'react';
+import { personal, experiences } from '../data/portfolio';
 import './Hero.css';
 
-const roles = ['Full Stack Engineer', 'Data Scientist', 'AI Systems Builder'];
+const currentRole = experiences.find((exp) => exp.current);
+
+const highlights = [
+  'Web, mobile, and cloud work on one product',
+  'SEC document pipeline handling 37,000+ filings',
+  'React, Python, FastAPI, and AWS in production',
+];
+
+const coreStack = ['React', 'TypeScript', 'Python', 'FastAPI', 'AWS', 'Node.js'];
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayed, setDisplayed] = useState('');
-  const [deleting, setDeleting] = useState(false);
-  const [charIndex, setCharIndex] = useState(0);
-
-  useEffect(() => {
-    const current = roles[roleIndex];
-    let timeout;
-
-    if (!deleting && charIndex < current.length) {
-      timeout = setTimeout(() => setCharIndex(i => i + 1), 65);
-    } else if (!deleting && charIndex === current.length) {
-      timeout = setTimeout(() => setDeleting(true), 2000);
-    } else if (deleting && charIndex > 0) {
-      timeout = setTimeout(() => setCharIndex(i => i - 1), 35);
-    } else if (deleting && charIndex === 0) {
-      setDeleting(false);
-      setRoleIndex(i => (i + 1) % roles.length);
-    }
-
-    setDisplayed(current.slice(0, charIndex));
-    return () => clearTimeout(timeout);
-  }, [charIndex, deleting, roleIndex]);
-
   return (
     <section className="hero" id="hero">
-      {/* Background grid */}
       <div className="hero__grid" aria-hidden="true" />
 
       <div className="container hero__inner">
         <div className="hero__content">
-          <span className="hero__eyebrow">Based in Tunis · Available globally</span>
+          <span className="hero__eyebrow">
+            {personal.location} · {personal.available}
+          </span>
 
           <h1 className="hero__name">
             Louay<br />
             <span>Guetat</span>
           </h1>
 
-          <div className="hero__role" aria-live="polite">
-            <span className="hero__role-text">{displayed}</span>
-            <span className="hero__cursor" aria-hidden="true" />
-          </div>
+          <p className="hero__role">Full Stack Engineer</p>
 
-          <p className="hero__bio">{personal.tagline}</p>
+          <p className="hero__bio">
+            I work remotely for a US fintech startup. I build the web app, APIs, and cloud
+            setup. Looking for a full-time role in Europe or Asia.
+          </p>
 
           <div className="hero__actions">
             <a className="hero__btn hero__btn--primary" href="#contact">
-              Get in touch
+              Contact me
             </a>
-            <a className="hero__btn hero__btn--ghost" href="#projects">
-              See my work
+            <a className="hero__btn hero__btn--ghost" href="#experience">
+              View experience
             </a>
           </div>
 
           <div className="hero__links">
-            <a href={personal.github} target="_blank" rel="noreferrer" className="hero__social" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-              </svg>
-            </a>
             <a href={personal.linkedin} target="_blank" rel="noreferrer" className="hero__social" aria-label="LinkedIn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a href={personal.github} target="_blank" rel="noreferrer" className="hero__social" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
               </svg>
             </a>
             <a href={`mailto:${personal.email}`} className="hero__social" aria-label="Email">
@@ -79,38 +64,38 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero__visual" aria-hidden="true">
-          <div className="hero__card">
-            <div className="hero__card-header">
-              <div className="hero__card-dot hero__card-dot--red" />
-              <div className="hero__card-dot hero__card-dot--yellow" />
-              <div className="hero__card-dot hero__card-dot--green" />
-              <span className="hero__card-filename">stack.ts</span>
-            </div>
-            <pre className="hero__code"><code>{`const louay = {
-  role: "Full Stack Engineer",
-  location: "Tunis → World",
-  experience: "2+ years",
-  
-  current: {
-    company: "UpTicker AI 🇺🇸",
-    stack: ["React", "FastAPI",
-            "LangChain", "AWS"],
-  },
-  
-  openTo: [
-    "Europe",
-    "Asia",
-    "Remote",
-  ],
-};`}</code></pre>
+        <aside className="hero__snapshot">
+          <div className="hero__snapshot-header">
+            <span className="hero__snapshot-label">Currently</span>
+            <span className="hero__snapshot-badge">Available</span>
           </div>
-        </div>
-      </div>
 
-      <div className="hero__scroll" aria-hidden="true">
-        <span>scroll</span>
-        <div className="hero__scroll-line" />
+          <div className="hero__snapshot-role">
+            <h2 className="hero__snapshot-title">{currentRole?.role}</h2>
+            <p className="hero__snapshot-company">
+              {currentRole?.company}
+              <span className="hero__snapshot-sep">·</span>
+              {currentRole?.type}
+            </p>
+          </div>
+
+          <ul className="hero__snapshot-list">
+            {highlights.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+
+          <div className="hero__snapshot-meta">
+            <span>2+ years experience</span>
+            <span>Remote-ready</span>
+          </div>
+
+          <div className="hero__snapshot-stack">
+            {coreStack.map((tech) => (
+              <span key={tech} className="hero__snapshot-tag">{tech}</span>
+            ))}
+          </div>
+        </aside>
       </div>
     </section>
   );

@@ -41,7 +41,7 @@ export default function Contact() {
                 {copied ? 'Copied!' : 'Copy'}
               </button>
               <a href={`mailto:${personal.email}`} className="contact__email-btn">
-                Send email →
+                Send email
               </a>
             </div>
           </div>
