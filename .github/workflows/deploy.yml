@@ -22,10 +22,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Node 24 ships npm 11, which is what generated package-lock.json.
+      # On npm 10 `npm ci` fails here: react-scripts depends on tailwindcss,
+      # whose nested postcss-load-config lists `yaml` as an *optional* peer
+      # dependency that npm 10 and npm 11 record differently in the lock.
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: client/package-lock.json
 
