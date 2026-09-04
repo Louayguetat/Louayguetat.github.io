@@ -1,56 +1,71 @@
-import React, { useState } from 'react';
-import { skills } from '../data/portfolio';
+import React from 'react';
+import { skills, coreStack, personal } from '../data/portfolio';
 import { useInView } from '../hooks/useInView';
+import { ArrowRightIcon } from './Icons';
 import './Skills.css';
 
-const categories = Object.keys(skills);
+const categories = Object.entries(skills);
 
 export default function Skills() {
-  const [active, setActive] = useState(categories[0]);
   const { ref, inView } = useInView();
 
   return (
-    <section className="section skills" id="skills">
+    <section className="section section--alt skills" id="skills">
       <div className="container">
-        <p className="section-label">Toolkit</p>
-        <h2 className="section-title">Technical <span>Skills</span></h2>
-
-        <div ref={ref} className={`skills__wrapper${inView ? ' fade-up' : ''}`}>
-          <div className="skills__filter" role="tablist">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                role="tab"
-                aria-selected={active === cat}
-                className={`skills__filter-btn${active === cat ? ' skills__filter-btn--active' : ''}`}
-                onClick={() => setActive(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          <div className="skills__grid" role="tabpanel">
-            {skills[active].map((skill, i) => (
-              <div
-                key={skill}
-                className="skill-chip"
-                style={{ animationDelay: `${i * 0.04}s` }}
-              >
-                {skill}
-              </div>
-            ))}
-          </div>
+        <div className="section-head">
+          <p className="section-label">Toolkit</p>
+          <h2 className="section-title">Technical <span>Skills</span></h2>
+          <p className="section-sub">
+            The stack I reach for daily is highlighted first; everything below it is something
+            I have shipped with.
+          </p>
         </div>
 
-        {/* All skills overview */}
-        <div className="skills__overview">
-          {categories.map(cat => (
-            <div key={cat} className="skills__group">
-              <h4 className="skills__group-title">{cat}</h4>
-              <p className="skills__group-items">{skills[cat].join(' · ')}</p>
+        <div ref={ref}>
+          <div className={`skills__core reveal${inView ? ' is-visible' : ''}`}>
+            <span className="skills__core-label">Daily driver</span>
+            <div className="skills__core-list">
+              {coreStack.map((skill) => (
+                <span key={skill} className="skills__core-chip">{skill}</span>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div className="skills__grid">
+            {categories.map(([category, items], i) => (
+              <div
+                key={category}
+                className={`skill-group reveal${inView ? ' is-visible' : ''}`}
+                style={{ '--reveal-delay': `${0.08 + i * 0.07}s` }}
+              >
+                <div className="skill-group__head">
+                  <h3 className="skill-group__title">{category}</h3>
+                  <span className="skill-group__count">{items.length}</span>
+                </div>
+                <div className="skill-group__items">
+                  {items.map((item) => (
+                    <span key={item} className="skill-chip">{item}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            <a
+              href={`mailto:${personal.email}`}
+              className={`skill-group skill-group--cta reveal${inView ? ' is-visible' : ''}`}
+              style={{ '--reveal-delay': `${0.08 + categories.length * 0.07}s` }}
+            >
+              <h3 className="skill-group__title">Not seeing your stack?</h3>
+              <p className="skill-group__cta-text">
+                I pick up new tools quickly — most of the list above was learned on the job.
+                Tell me what you run and I'll tell you honestly where I stand.
+              </p>
+              <span className="skill-group__cta-link">
+                Ask me
+                <ArrowRightIcon size={14} />
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

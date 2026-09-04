@@ -8,6 +8,11 @@ export function useInView(options = {}) {
     const el = ref.current;
     if (!el) return;
 
+    if (typeof IntersectionObserver === 'undefined') {
+      setInView(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -15,7 +20,7 @@ export function useInView(options = {}) {
           observer.disconnect();
         }
       },
-      { threshold: 0.12, ...options }
+      { threshold: 0.1, rootMargin: '0px 0px -8% 0px', ...options }
     );
 
     observer.observe(el);

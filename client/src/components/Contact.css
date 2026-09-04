@@ -1,132 +1,217 @@
-.contact__inner {
+.contact__panel {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 3rem;
-  align-items: start;
+  gap: 3.5rem;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 3.25rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.contact__panel-glow {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 420px;
+  height: 300px;
+  background: var(--accent-soft);
+  filter: blur(80px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.contact__main { position: relative; }
+
+.contact__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.contact__title span {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .contact__text {
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.8;
-  margin-bottom: 2rem;
-  max-width: 56ch;
+  max-width: 54ch;
+  margin-bottom: 1.75rem;
 }
 
-.contact__text strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
+.contact__text strong { color: var(--text-primary); font-weight: 600; }
 
-.contact__email-row {
+/* ─── Facts ────────────────────────────────────────────────────────────────── */
+.contact__facts {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.contact__fact {
+  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.45rem;
+  font-size: 0.79rem;
+  color: var(--text-secondary);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.35rem 0.8rem;
+}
+
+.contact__fact svg { color: var(--accent); flex-shrink: 0; }
+
+.contact__fact--live { color: var(--green); border-color: var(--green-line); background: var(--green-dim); }
+
+/* ─── Email row ────────────────────────────────────────────────────────────── */
+.contact__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.4rem 0.4rem 1rem;
+  margin-bottom: 1.75rem;
+  max-width: 100%;
   flex-wrap: wrap;
 }
 
-.contact__email-text {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
+.contact__email-value {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
   color: var(--text-primary);
-  padding: 0.6rem 1rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  overflow-wrap: anywhere;
 }
 
 .contact__copy {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.78rem;
+  font-weight: 600;
   color: var(--text-secondary);
-  padding: 0.6rem 0.9rem;
+  padding: 0.42rem 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 7px;
   background: var(--bg-surface);
   transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 
 .contact__copy:hover {
   color: var(--accent);
-  border-color: var(--accent);
+  border-color: var(--accent-line);
   background: var(--accent-dim);
 }
 
-.contact__email-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.6rem 1.25rem;
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: opacity 0.2s, transform 0.2s;
+.contact__actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
 }
 
-.contact__email-btn:hover {
-  opacity: 0.88;
-  transform: translateY(-1px);
-}
-
-/* Link cards */
-.contact__links {
+/* ─── Channel cards ────────────────────────────────────────────────────────── */
+.contact__channels {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.7rem;
 }
 
-.contact__link-card {
+.channel-card {
   display: flex;
   align-items: center;
   gap: 0.9rem;
-  padding: 1rem 1.25rem;
-  background: var(--bg-surface);
+  padding: 1rem 1.15rem;
+  background: var(--bg-raised);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  color: var(--text-secondary);
-  transition: border-color 0.2s, background 0.2s, transform 0.2s, color 0.2s;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-.contact__link-card:hover {
-  border-color: var(--accent);
-  background: var(--accent-dim);
-  transform: translateX(4px);
-  color: var(--text-primary);
+.channel-card:hover {
+  border-color: var(--accent-line);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-.contact__link-icon {
-  width: 20px;
-  height: 20px;
+.channel-card__icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-line);
   color: var(--accent);
 }
 
-.contact__link-label {
+.channel-card__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.channel-card__label {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.contact__link-sub {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
+.channel-card__sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   color: var(--text-muted);
-  margin-top: 0.1rem;
+  margin-top: 0.12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-@media (max-width: 900px) {
-  .contact__inner {
+.channel-card__arrow {
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), color 0.2s;
+}
+
+.channel-card:hover .channel-card__arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--accent);
+}
+
+/* ─── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .contact__panel {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2.25rem;
   }
 }
 
-@media (max-width: 480px) {
-  .contact__email-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+@media (max-width: 520px) {
+  .contact__panel { padding: 1.6rem; border-radius: var(--radius-lg); }
+  .contact__actions .btn { flex: 1 1 100%; }
+  .contact__email { width: 100%; }
+  .channel-card__arrow { opacity: 1; transform: none; }
 }

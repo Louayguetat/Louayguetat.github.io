@@ -1,101 +1,155 @@
 import React from 'react';
-import { personal, experiences } from '../data/portfolio';
+import { personal, experiences, stats, coreStack } from '../data/portfolio';
+import {
+  ArrowRightIcon,
+  ClockIcon,
+  DownloadIcon,
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+  PinIcon,
+} from './Icons';
 import './Hero.css';
 
 const currentRole = experiences.find((exp) => exp.current);
 
 const highlights = [
-  'Web, mobile, and cloud work on one product',
+  'Web, mobile, and cloud work on a single product',
   'SEC document pipeline handling 37,000+ filings',
   'React, Python, FastAPI, and AWS in production',
 ];
 
-const coreStack = ['React', 'TypeScript', 'Python', 'FastAPI', 'AWS', 'Node.js'];
+const initials = (name) =>
+  name.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
 
 export default function Hero() {
   return (
     <section className="hero" id="hero">
-      <div className="hero__grid" aria-hidden="true" />
+      <div className="hero__backdrop" aria-hidden="true" />
 
       <div className="container hero__inner">
         <div className="hero__content">
-          <span className="hero__eyebrow">
-            {personal.location} · {personal.available}
+          <span className="hero__status">
+            <span className="pulse-dot" />
+            Open to full-time roles · Worldwide
           </span>
 
           <h1 className="hero__name">
-            Louay<br />
-            <span>Guetat</span>
+            Louay <span>Guetat</span>
           </h1>
 
-          <p className="hero__role">Full Stack Engineer</p>
-
-          <p className="hero__bio">
-            I work remotely for a US fintech startup. I build the web app, APIs, and cloud
-            setup. Looking for a full-time role in Europe or Asia.
+          <p className="hero__role">
+            Full Stack Engineer
+            <span className="hero__role-sep" />
+            <span className="hero__role-note">React · Python · AWS</span>
           </p>
 
-          <div className="hero__actions">
-            <a className="hero__btn hero__btn--primary" href="#contact">
-              Contact me
-            </a>
-            <a className="hero__btn hero__btn--ghost" href="#experience">
-              View experience
-            </a>
+          <p className="hero__bio">
+            I build and ship production software end to end — from React interfaces to Python APIs
+            and the AWS infrastructure underneath. Currently doing that remotely for a US fintech
+            startup, and open to relocating anywhere in Europe, the Americas, or Asia for the
+            right role.
+          </p>
+
+          <div className="hero__meta">
+            <span className="hero__meta-item">
+              <PinIcon />
+              {personal.location}
+            </span>
+            <span className="hero__meta-item">
+              <ClockIcon />
+              {personal.timezone}
+            </span>
           </div>
 
-          <div className="hero__links">
-            <a href={personal.linkedin} target="_blank" rel="noreferrer" className="hero__social" aria-label="LinkedIn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
+          <div className="hero__actions">
+            <a className="btn btn--primary" href="#contact">
+              Get in touch
+              <ArrowRightIcon size={15} />
             </a>
-            <a href={personal.github} target="_blank" rel="noreferrer" className="hero__social" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-              </svg>
+            <a className="btn btn--ghost" href={personal.resumeUrl} download>
+              <DownloadIcon size={15} />
+              Download résumé
             </a>
-            <a href={`mailto:${personal.email}`} className="hero__social" aria-label="Email">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
-            </a>
+
+            <div className="hero__socials">
+              <a
+                href={personal.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="hero__social"
+                aria-label="LinkedIn"
+              >
+                <LinkedinIcon size={18} />
+              </a>
+              <a
+                href={personal.github}
+                target="_blank"
+                rel="noreferrer"
+                className="hero__social"
+                aria-label="GitHub"
+              >
+                <GithubIcon size={18} />
+              </a>
+              <a href={`mailto:${personal.email}`} className="hero__social" aria-label="Email">
+                <MailIcon size={18} />
+              </a>
+            </div>
           </div>
         </div>
 
-        <aside className="hero__snapshot">
-          <div className="hero__snapshot-header">
-            <span className="hero__snapshot-label">Currently</span>
-            <span className="hero__snapshot-badge">Available</span>
+        <aside className="hero__card">
+          <div className="hero__card-glow" aria-hidden="true" />
+
+          <div className="hero__card-head">
+            <span className="hero__card-label">Currently</span>
+            <span className="hero__card-badge">
+              <span className="pulse-dot" />
+              Available
+            </span>
           </div>
 
-          <div className="hero__snapshot-role">
-            <h2 className="hero__snapshot-title">{currentRole?.role}</h2>
-            <p className="hero__snapshot-company">
-              {currentRole?.company}
-              <span className="hero__snapshot-sep">·</span>
-              {currentRole?.type}
-            </p>
+          <div className="hero__card-role">
+            <span className="hero__card-avatar">{initials(currentRole?.company || 'LG')}</span>
+            <div>
+              <h2 className="hero__card-title">{currentRole?.role}</h2>
+              <p className="hero__card-company">
+                {currentRole?.company}
+                <span className="hero__card-dot">·</span>
+                {currentRole?.type}
+              </p>
+            </div>
           </div>
 
-          <ul className="hero__snapshot-list">
+          <ul className="hero__card-list">
             {highlights.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
 
-          <div className="hero__snapshot-meta">
-            <span>2+ years experience</span>
-            <span>Remote-ready</span>
-          </div>
-
-          <div className="hero__snapshot-stack">
-            {coreStack.map((tech) => (
-              <span key={tech} className="hero__snapshot-tag">{tech}</span>
-            ))}
+          <div className="hero__card-stack">
+            <span className="hero__card-stack-label">Core stack</span>
+            <div className="hero__card-tags">
+              {coreStack.map((tech) => (
+                <span key={tech} className="tag tag--accent">{tech}</span>
+              ))}
+            </div>
           </div>
         </aside>
+      </div>
+
+      <div className="hero__stats">
+        <div className="container hero__stats-grid">
+          {stats.map(({ value, unit, label }) => (
+            <div key={label} className="hero__stat">
+              <span className="hero__stat-value">
+                {value}
+                {unit && <em>{unit}</em>}
+              </span>
+              <span className="hero__stat-label">{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

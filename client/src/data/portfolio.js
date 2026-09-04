@@ -3,20 +3,71 @@ export const personal = {
   title: 'Full Stack Engineer',
   tagline: 'I build web and mobile products for startups, from the interface to the backend.',
   bio: 'Full Stack Engineer with 2+ years shipping production software across web, mobile, and cloud. I work remotely for a US fintech startup and handle most of the product stack myself, from React UI to Python APIs on AWS.',
-  aboutExtra: 'Right now I am at UpTicker AI, a US fintech startup. I am looking for full-time roles in Europe (Germany, Netherlands, Sweden, France) or Asia (Singapore).',
+  aboutExtra: 'Right now I am at Alpha Momentum, a US fintech startup. I am looking for my next full-time role and I am open to relocating anywhere in Europe, the Americas, or Asia.',
   location: 'Tunis, Tunisia',
-  available: 'Open to relocation in Europe and Asia',
+  available: 'Open to relocation worldwide',
   email: 'louay.guetat1@gmail.com',
   phone: '+216 55 160 398',
+  whatsapp: '21655160398',
+  timezone: 'GMT+1 · flexible across time zones',
   linkedin: 'https://www.linkedin.com/in/guetat-louay',
   github: 'https://github.com/Louay-Guetat',
+  // Drop the PDF at client/public/Louay-Guetat-CV.pdf to activate the download buttons.
+  resumeUrl: '/Louay-Guetat-CV.pdf',
 };
+
+// Headline numbers recruiters scan first. Every figure is drawn from the work below.
+export const stats = [
+  { value: '2+', unit: 'yrs', label: 'Shipping production software' },
+  { value: '37', unit: 'k+', label: 'SEC filings in a live pipeline' },
+  { value: '86', unit: 'k', label: 'Lines of code on my latest platform' },
+  { value: '7', unit: '', label: 'Products built end to end' },
+];
+
+export const focusAreas = [
+  {
+    icon: 'layers',
+    title: 'Full-stack product',
+    detail: 'React and TypeScript front ends wired to Python and Node APIs, owned end to end.',
+    tags: ['React', 'TypeScript', 'FastAPI'],
+  },
+  {
+    icon: 'ai',
+    title: 'AI & LLM systems',
+    detail: 'Retrieval pipelines, agent workflows, and guardrails around OpenAI and Anthropic models.',
+    tags: ['LangGraph', 'RAG', 'OpenAI'],
+  },
+  {
+    icon: 'trend',
+    title: 'Fintech & data',
+    detail: 'SEC filing pipelines, financial models, brokerage and banking integrations.',
+    tags: ['SEC EDGAR', 'Plaid', 'Alpaca'],
+  },
+  {
+    icon: 'cloud',
+    title: 'Cloud & delivery',
+    detail: 'AWS Lambda, ECS, and Batch behind CI/CD pipelines across dev, staging, and production.',
+    tags: ['AWS', 'Docker', 'GitHub Actions'],
+  },
+];
+
+// Scannable answers to the questions a recruiter asks on the first call.
+export const quickFacts = [
+  { label: 'Experience', value: '2+ years, production' },
+  { label: 'Current role', value: 'Full Stack Engineer @ Alpha Momentum' },
+  { label: 'Based in', value: 'Tunis, Tunisia (GMT+1)' },
+  { label: 'Relocation', value: 'Worldwide · Europe, Americas, Asia', highlight: true },
+  { label: 'Work setup', value: 'On-site, hybrid, or remote' },
+  { label: 'Visa', value: 'Sponsorship required' },
+];
+
+export const coreStack = ['React', 'TypeScript', 'Python', 'FastAPI', 'Node.js', 'AWS', 'PostgreSQL', 'Docker'];
 
 export const experiences = [
   {
     role: 'Full Stack Engineer',
-    company: 'UpTicker AI',
-    companyUrl: 'https://upticker.ai',
+    company: 'Alpha Momentum',
+    companyUrl: 'https://alphamomentum.ai',
     type: 'Remote · US Startup',
     period: 'Feb 2025 - Present',
     current: true,
@@ -105,13 +156,38 @@ export const experiences = [
 
 export const projects = [
   {
-    title: 'UpTicker AI',
-    url: 'https://upticker.ai',
+    title: 'Alpha Momentum',
+    url: 'https://alphamomentum.ai',
     github: null,
     status: 'Live · Production',
     statusColor: 'green',
+    category: 'Fintech Platform',
+    role: 'Full Stack Engineer',
+    period: 'Feb 2025 - Present',
     description: 'Financial research platform with factor models, SEC filing search, research automation, and live trading via Alpaca. I built the product from the React frontend to AWS infrastructure.',
+    metrics: [
+      { value: '37k+', label: 'SEC documents pipelined on AWS Batch' },
+      { value: '3', label: 'Clients: web, iOS, and Android' },
+      { value: '5', label: 'LangGraph research workflows' },
+    ],
     tech: ['React 18', 'TypeScript', 'FastAPI', 'LangChain', 'AWS', 'MongoDB', 'Neo4j', 'Stripe', 'Plaid'],
+  },
+  {
+    title: 'Capital Thread',
+    url: null,
+    github: null,
+    status: 'Client Project · Active',
+    statusColor: 'amber',
+    category: 'AI · Private Markets',
+    role: 'Full Stack Engineer',
+    period: 'Aug 2026 - Present',
+    metrics: [
+      { value: '86k', label: 'Lines across backend and frontend' },
+      { value: '65', label: 'REST endpoints over 25 tables' },
+      { value: '437', label: 'Unit tests on the financial engines' },
+    ],
+    description: 'AI deal platform for private credit, private equity, and venture funds. Sources opportunities from SEC EDGAR and Form D bulk data, then runs a one-click diligence pipeline that parses Inline XBRL and generates financial models, DCF valuations, and IC memos where every figure deep-links back to its source filing. LLMs handle judgment and narrative, deterministic Python handles all arithmetic. Client engagement I have been building through Alpha Momentum since August 2026.',
+    tech: ['React 19', 'TypeScript', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'OpenAI API', 'Anthropic API', 'SEC EDGAR', 'Arelle XBRL', 'OAuth 2.0'],
   },
   {
     title: 'Outlou',
@@ -119,6 +195,8 @@ export const projects = [
     github: 'https://github.com/Louay-Guetat/LocationSocialMediaApp',
     status: 'In Development',
     statusColor: 'amber',
+    category: 'Mobile · Social',
+    role: 'Solo build',
     description: 'Location-based social network built with React Native and Firebase. Users share moments tied to places, discover nearby activity, and connect through map-based feeds. Includes QR profile links and support for English, Arabic, and French.',
     tech: ['React Native', 'Expo', 'Firebase', 'Node.js', 'Google Maps API', 'Backblaze B2', 'Resend'],
   },
@@ -128,6 +206,8 @@ export const projects = [
     github: null,
     status: 'Live',
     statusColor: 'green',
+    category: 'EdTech',
+    role: 'Solo build',
     description: 'Educational platform that uses memes and short videos to make learning more engaging. I built it solo with a React frontend, Node.js/MySQL backend, and a React Native app.',
     tech: ['React', 'Node.js', 'Express', 'MySQL', 'React Native'],
   },
@@ -137,6 +217,8 @@ export const projects = [
     github: 'https://github.com/Louay-Guetat/Educational-Interactive-Intelligent-Platform',
     status: 'Education Project',
     statusColor: 'blue',
+    category: 'AI · EdTech',
+    role: 'Team project',
     description: 'Math learning platform for children. Turns text problems into visual representations using vision models. Includes interactive quizzes and performance dashboards.',
     tech: ['React', 'Django', 'MongoDB', 'TensorFlow', 'HuggingFace', 'NumPy', 'Pandas'],
   },
@@ -146,6 +228,8 @@ export const projects = [
     github: 'https://github.com/Louay-Guetat/Risk-Management-Recommendation-System',
     status: 'Education Project',
     statusColor: 'blue',
+    category: 'ML · NLP',
+    role: 'Team project',
     description: 'Chatbot-style system for project risk management, trained on PMBOK 11th edition data. Uses a Graph Attention Network with a BERT embedder for text-based recommendations.',
     tech: ['Django', 'TensorFlow', 'PyTorch', 'NLP', 'GNN', 'BERT', 'NumPy'],
   },
@@ -155,13 +239,15 @@ export const projects = [
     github: 'https://github.com/Louay-Guetat/Yoga-classifcation',
     status: 'Education Project',
     statusColor: 'blue',
+    category: 'Computer Vision',
+    role: 'Solo build',
     description: 'CNN-based yoga pose classification model. The trained CNN reached 86% accuracy. ResNet reached 97% across multiple pose categories.',
     tech: ['Python', 'Django', 'CNN', 'ResNet', 'NumPy', 'Pandas'],
   },
 ];
 
 export const skills = {
-  'Frontend': ['React 18', 'TypeScript', 'Next.js', 'Vite', 'MUI', 'Tailwind CSS', 'Framer Motion', 'Angular', 'SCSS'],
+  'Frontend': ['React 19', 'TypeScript', 'Next.js', 'Vite', 'MUI', 'Tailwind CSS', 'TanStack Query', 'Zustand', 'Framer Motion', 'Angular', 'SCSS'],
   'Mobile': ['React Native', 'Expo', 'Firebase', 'Plaid SDK', 'IAP'],
   'Backend': ['Node.js', 'Express', 'FastAPI', 'Flask', 'Django', 'Spring Boot', 'Serverless'],
   'Machine Learning': ['LangChain', 'LangGraph', 'OpenAI API', 'Anthropic API', 'HuggingFace', 'RAG', 'scikit-learn', 'TensorFlow', 'PyTorch', 'Keras'],
