@@ -2,7 +2,7 @@
   "name": "louay-guetat-portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://louay-guetat.github.io",
+  "homepage": "https://louayguetat.github.io",
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
