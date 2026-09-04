@@ -14,7 +14,6 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState('');
   const { theme, toggleTheme } = useTheme();
@@ -22,9 +21,6 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
-
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0);
 
       let current = '';
       navLinks.forEach(({ href }) => {
@@ -36,11 +32,7 @@ export default function Navbar() {
 
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   // Lock body scroll while the mobile drawer is open.
@@ -58,11 +50,7 @@ export default function Navbar() {
     <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
         <a className="navbar__logo" href="#hero" onClick={() => handleNav('#hero')}>
-          <span className="navbar__mark">LG</span>
-          <span className="navbar__wordmark">
-            Louay Guetat
-            <span className="navbar__wordmark-role">Full Stack Engineer</span>
-          </span>
+          Louay Guetat
         </a>
 
         <nav className="navbar__links" aria-label="Main navigation">
@@ -88,13 +76,11 @@ export default function Navbar() {
           </button>
 
           <a className="navbar__resume" href="#resume" onClick={() => handleNav('#resume')}>
-            <FileTextIcon size={15} />
-            Résumé
+            <FileTextIcon size={14} />
+            CV
           </a>
 
-          <a className="navbar__cta" href={`mailto:${personal.email}`}>
-            Hire me
-          </a>
+          <a className="navbar__cta" href={`mailto:${personal.email}`}>Hire me</a>
 
           <button
             className={`navbar__burger${menuOpen ? ' navbar__burger--open' : ''}`}
@@ -107,11 +93,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="navbar__progress" aria-hidden="true">
-        <span style={{ width: `${progress}%` }} />
-      </div>
-
-      {/* Mobile drawer */}
       <div className={`navbar__drawer${menuOpen ? ' navbar__drawer--open' : ''}`}>
         {navLinks.map(({ label, href }) => (
           <button key={href} className="navbar__drawer-link" onClick={() => handleNav(href)}>
@@ -121,11 +102,9 @@ export default function Navbar() {
         <div className="navbar__drawer-actions">
           <button className="btn btn--ghost" onClick={() => handleNav('#resume')}>
             <FileTextIcon size={15} />
-            Résumé
+            My CV
           </button>
-          <a className="btn btn--primary" href={`mailto:${personal.email}`}>
-            Hire me
-          </a>
+          <a className="btn btn--primary" href={`mailto:${personal.email}`}>Hire me</a>
         </div>
       </div>
     </header>

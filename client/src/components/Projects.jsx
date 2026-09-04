@@ -4,37 +4,21 @@ import { useInView } from '../hooks/useInView';
 import { ExternalIcon, GithubIcon } from './Icons';
 import './Projects.css';
 
-// Projects carrying hard numbers get the large treatment at the top.
+// Projects with hard numbers behind them get the larger treatment at the top.
 const featured = projects.filter((p) => p.metrics && p.metrics.length);
 const others = projects.filter((p) => !p.metrics || !p.metrics.length);
-
-function StatusBadge({ label, color }) {
-  return <span className={`project__status project__status--${color}`}>{label}</span>;
-}
 
 function CardLinks({ github, url }) {
   if (!github && !url) return null;
   return (
-    <div className="project-card__actions">
+    <div className="project__links">
       {github && (
-        <a
-          href={github}
-          target="_blank"
-          rel="noreferrer"
-          className="project-card__icon-btn"
-          aria-label="View source on GitHub"
-        >
+        <a href={github} target="_blank" rel="noreferrer" aria-label="View source on GitHub">
           <GithubIcon size={15} />
         </a>
       )}
       {url && (
-        <a
-          href={url}
-          target="_blank"
-          rel="noreferrer"
-          className="project-card__icon-btn"
-          aria-label="Visit live site"
-        >
+        <a href={url} target="_blank" rel="noreferrer" aria-label="Visit live site">
           <ExternalIcon size={14} />
         </a>
       )}
@@ -50,9 +34,10 @@ export default function Projects() {
       <div className="container">
         <div className="section-head">
           <p className="section-label">Work</p>
-          <h2 className="section-title">Featured <span>Projects</span></h2>
+          <h2 className="section-title">Things I have built</h2>
           <p className="section-sub">
-            Products I designed, built, and shipped — two of them running in production today.
+            A mix of client work, side projects, and university projects. Two of them are live
+            and in daily use.
           </p>
         </div>
 
@@ -61,31 +46,19 @@ export default function Projects() {
             <article
               key={p.title}
               className={`project-hero reveal${inView ? ' is-visible' : ''}`}
-              style={{ '--reveal-delay': `${i * 0.1}s` }}
+              style={{ '--reveal-delay': `${i * 0.08}s` }}
             >
-              <div className="project-hero__glow" aria-hidden="true" />
-
-              <header className="project-hero__top">
-                <span className="project-card__category">{p.category}</span>
-                <div className="project-hero__top-right">
-                  <StatusBadge label={p.status} color={p.statusColor} />
-                  <CardLinks github={p.github} url={p.url} />
-                </div>
-              </header>
+              <div className="project__top">
+                <span className="project__category">{p.category}</span>
+                <CardLinks github={p.github} url={p.url} />
+              </div>
 
               <h3 className="project-hero__title">{p.title}</h3>
-
               <p className="project-hero__meta">
                 {p.role}
-                {p.period && (
-                  <>
-                    <span className="project-hero__meta-dot">·</span>
-                    {p.period}
-                  </>
-                )}
+                {p.period ? `, ${p.period}` : ''}
               </p>
-
-              <p className="project-hero__desc">{p.description}</p>
+              <p className="project__desc">{p.description}</p>
 
               <div className="project-hero__metrics">
                 {p.metrics.map((m) => (
@@ -96,7 +69,7 @@ export default function Projects() {
                 ))}
               </div>
 
-              <div className="project-card__tech">
+              <div className="project__tech">
                 {p.tech.map((t) => (
                   <span key={t} className="tag">{t}</span>
                 ))}
@@ -110,18 +83,18 @@ export default function Projects() {
             <article
               key={p.title}
               className={`project-card reveal${inView ? ' is-visible' : ''}`}
-              style={{ '--reveal-delay': `${0.2 + i * 0.07}s` }}
+              style={{ '--reveal-delay': `${0.16 + i * 0.06}s` }}
             >
-              <header className="project-card__top">
-                <StatusBadge label={p.status} color={p.statusColor} />
+              <div className="project__top">
+                <span className="project__category">{p.category}</span>
                 <CardLinks github={p.github} url={p.url} />
-              </header>
+              </div>
 
-              <span className="project-card__category">{p.category}</span>
               <h3 className="project-card__title">{p.title}</h3>
-              <p className="project-card__desc">{p.description}</p>
+              <p className="project-hero__meta">{p.status}</p>
+              <p className="project__desc">{p.description}</p>
 
-              <div className="project-card__tech">
+              <div className="project__tech">
                 {p.tech.map((t) => (
                   <span key={t} className="tag">{t}</span>
                 ))}

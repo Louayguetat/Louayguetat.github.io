@@ -52,13 +52,6 @@ export const DownloadIcon = ({ size = 16 }) => (
   </svg>
 );
 
-export const ArrowRightIcon = ({ size = 16 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" {...stroke} aria-hidden="true">
-    <line x1="5" y1="12" x2="19" y2="12" />
-    <polyline points="12 5 19 12 12 19" />
-  </svg>
-);
-
 export const CopyIcon = ({ size = 14 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" {...stroke} aria-hidden="true">
     <rect x="9" y="9" width="13" height="13" rx="2" />

@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import { personal } from '../data/portfolio';
 import { useInView } from '../hooks/useInView';
 import {
-  ArrowRightIcon,
   CheckIcon,
-  ClockIcon,
   CopyIcon,
   FileTextIcon,
   GithubIcon,
   LinkedinIcon,
-  PinIcon,
   WhatsappIcon,
 } from './Icons';
 import './Contact.css';
@@ -25,60 +22,31 @@ export default function Contact() {
   };
 
   const channels = [
-    {
-      label: 'LinkedIn',
-      sub: 'guetat-louay',
-      href: personal.linkedin,
-      icon: <LinkedinIcon size={19} />,
-    },
-    {
-      label: 'GitHub',
-      sub: 'Louay-Guetat',
-      href: personal.github,
-      icon: <GithubIcon size={19} />,
-    },
+    { label: 'LinkedIn', sub: 'guetat-louay', href: personal.linkedin, icon: <LinkedinIcon size={17} /> },
+    { label: 'GitHub', sub: 'Louay-Guetat', href: personal.github, icon: <GithubIcon size={17} /> },
     {
       label: 'WhatsApp',
       sub: personal.phone,
       href: `https://wa.me/${personal.whatsapp}`,
-      icon: <WhatsappIcon size={19} />,
+      icon: <WhatsappIcon size={17} />,
     },
   ];
 
   return (
     <section className="section contact" id="contact">
       <div className="container">
-        <div ref={ref} className={`contact__panel reveal${inView ? ' is-visible' : ''}`}>
-          <div className="contact__panel-glow" aria-hidden="true" />
-
+        <div ref={ref} className={`contact__grid reveal${inView ? ' is-visible' : ''}`}>
           <div className="contact__main">
-            <p className="section-label">Let's talk</p>
-            <h2 className="contact__title">
-              Ready to build something<br />
-              <span>worth shipping?</span>
-            </h2>
+            <p className="section-label">Get in touch</p>
+            <h2 className="section-title">Let's talk</h2>
 
             <p className="contact__text">
-              I'm open to full-time roles anywhere across <strong>Europe</strong>,
-              the <strong>Americas</strong>, and <strong>Asia</strong> — no country is off the
-              table, and I'm happy to relocate. Visa sponsorship required. If you're hiring or
-              just want to compare notes, my inbox is always open.
+              I'm looking for a full-time role and I'm open to moving anywhere in Europe, the
+              Americas, or Asia. I would need visa sponsorship. If you're hiring, or you just
+              want to talk about something you're building, send me a message.
             </p>
 
-            <div className="contact__facts">
-              <span className="contact__fact">
-                <PinIcon />
-                {personal.location}
-              </span>
-              <span className="contact__fact">
-                <ClockIcon />
-                {personal.timezone}
-              </span>
-              <span className="contact__fact contact__fact--live">
-                <span className="pulse-dot" />
-                Usually replies within 24 hours
-              </span>
-            </div>
+            <p className="contact__note">I usually reply within a day.</p>
 
             <div className="contact__email">
               <span className="contact__email-value">{personal.email}</span>
@@ -89,33 +57,21 @@ export default function Contact() {
             </div>
 
             <div className="contact__actions">
-              <a className="btn btn--primary" href={`mailto:${personal.email}`}>
-                Send an email
-                <ArrowRightIcon size={15} />
-              </a>
+              <a className="btn btn--primary" href={`mailto:${personal.email}`}>Send an email</a>
               <a className="btn btn--ghost" href="#resume">
                 <FileTextIcon size={15} />
-                View résumé
+                View my CV
               </a>
             </div>
           </div>
 
           <div className="contact__channels">
             {channels.map(({ label, sub, href, icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                className="channel-card"
-              >
-                <span className="channel-card__icon">{icon}</span>
-                <span className="channel-card__text">
-                  <span className="channel-card__label">{label}</span>
-                  <span className="channel-card__sub">{sub}</span>
-                </span>
-                <span className="channel-card__arrow">
-                  <ArrowRightIcon size={15} />
+              <a key={label} href={href} target="_blank" rel="noreferrer" className="channel">
+                <span className="channel__icon">{icon}</span>
+                <span className="channel__text">
+                  <span className="channel__label">{label}</span>
+                  <span className="channel__sub">{sub}</span>
                 </span>
               </a>
             ))}

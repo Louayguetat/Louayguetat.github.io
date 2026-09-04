@@ -18,7 +18,7 @@ export function useTheme() {
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);
     } catch (e) {
-      /* storage blocked (private mode) — the theme still applies for this session */
+      /* storage blocked in private mode, so the theme only lasts this session */
     }
   }, [theme]);
 

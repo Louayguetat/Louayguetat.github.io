@@ -18,24 +18,24 @@ export default function Resume() {
 
   const activeTrack = resumeTracks.find((t) => t.id === track);
   const activeLang = resumeLanguages.find((l) => l.id === lang);
-  const fileLabel = `${activeTrack.label} — ${activeLang.label}`;
+  const fileLabel = `${activeTrack.label}, ${activeLang.label}`;
 
   return (
     <section className="section resume" id="resume">
       <div className="container">
         <div className="section-head">
-          <p className="section-label">Résumé</p>
-          <h2 className="section-title">Pick the <span>right CV</span></h2>
+          <p className="section-label">CV</p>
+          <h2 className="section-title">My CV</h2>
           <p className="section-sub">
-            I keep two versions depending on the role, each in English and French. Preview it
-            here, open it in a new tab, or download it as PDF or Word.
+            I keep two versions depending on the kind of role, each one in English and French.
+            Have a look here, or download whichever you need.
           </p>
         </div>
 
         <div ref={ref} className={`resume__layout reveal${inView ? ' is-visible' : ''}`}>
           <div className="resume__controls">
             <fieldset className="resume__group">
-              <legend className="resume__group-label">Role focus</legend>
+              <legend className="resume__group-label">Kind of role</legend>
               <div className="resume__options">
                 {resumeTracks.map((t) => (
                   <button
@@ -62,7 +62,6 @@ export default function Resume() {
                     aria-pressed={lang === l.id}
                   >
                     <span className="resume__option-label">{l.label}</span>
-                    <span className="resume__option-detail">{l.hint}</span>
                   </button>
                 ))}
               </div>
@@ -71,26 +70,22 @@ export default function Resume() {
             <div className="resume__actions">
               <a className="btn btn--primary" href={pdf} target="_blank" rel="noreferrer">
                 <ExternalIcon size={15} />
-                Open in new tab
+                Open in a new tab
               </a>
               <a className="btn btn--ghost" href={pdf} download>
                 <DownloadIcon size={15} />
                 Download PDF
               </a>
               <a className="resume__docx" href={docx} download>
-                <FileTextIcon size={14} />
-                Word version (.docx)
+                Or get the Word version
               </a>
             </div>
           </div>
 
           <div className="resume__viewer">
             <div className="resume__viewer-bar">
-              <span className="resume__viewer-title">
-                <FileTextIcon size={14} />
-                {fileLabel}
-              </span>
-              <span className="resume__viewer-badge">PDF</span>
+              <FileTextIcon size={14} />
+              {fileLabel}
             </div>
 
             {/* key forces a remount so the embedded PDF reloads on every switch */}
@@ -98,18 +93,16 @@ export default function Resume() {
               key={pdf}
               className="resume__frame"
               src={`${pdf}#view=FitH&navpanes=0`}
-              title={`Louay Guetat résumé — ${fileLabel}`}
+              title={`Louay Guetat CV, ${fileLabel}`}
             />
 
             {/* Mobile browsers rarely render embedded PDFs, so offer a direct link */}
             <div className="resume__fallback">
-              <FileTextIcon size={22} />
               <p className="resume__fallback-text">
-                Inline preview isn't supported on small screens.
+                Your browser cannot show a PDF inline on a screen this size.
               </p>
               <a className="btn btn--primary" href={pdf} target="_blank" rel="noreferrer">
-                Open {fileLabel}
-                <ExternalIcon size={15} />
+                Open my CV
               </a>
             </div>
           </div>
