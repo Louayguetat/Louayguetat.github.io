@@ -12,9 +12,29 @@ export const personal = {
   timezone: 'GMT+1 · flexible across time zones',
   linkedin: 'https://www.linkedin.com/in/guetat-louay',
   github: 'https://github.com/Louay-Guetat',
-  // Drop the PDF at client/public/Louay-Guetat-CV.pdf to activate the download buttons.
-  resumeUrl: '/Louay-Guetat-CV.pdf',
+  resumeUrl: '/CV/FullStack/Louay_Guetat_ENG.pdf',
 };
+
+/* Résumé variants. Each `id` is the folder name under client/public/CV, and each
+   language `id` is the filename suffix, so the files resolve as
+   /CV/<track>/Louay_Guetat_<lang>.<pdf|docx>. */
+export const resumeTracks = [
+  {
+    id: 'FullStack',
+    label: 'Full Stack',
+    detail: 'Product engineering: React and TypeScript front ends, Python and Node APIs, AWS.',
+  },
+  {
+    id: 'AI',
+    label: 'AI Engineering',
+    detail: 'LLM systems: retrieval pipelines, agent workflows, and model integration.',
+  },
+];
+
+export const resumeLanguages = [
+  { id: 'ENG', label: 'English', hint: 'International roles' },
+  { id: 'FR', label: 'Français', hint: 'France, Belgique, Suisse, Canada' },
+];
 
 // Headline numbers recruiters scan first. Every figure is drawn from the work below.
 export const stats = [

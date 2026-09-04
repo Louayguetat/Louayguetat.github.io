@@ -6,7 +6,7 @@ import {
   CheckIcon,
   ClockIcon,
   CopyIcon,
-  DownloadIcon,
+  FileTextIcon,
   GithubIcon,
   LinkedinIcon,
   PinIcon,
@@ -93,9 +93,9 @@ export default function Contact() {
                 Send an email
                 <ArrowRightIcon size={15} />
               </a>
-              <a className="btn btn--ghost" href={personal.resumeUrl} download>
-                <DownloadIcon size={15} />
-                Download résumé
+              <a className="btn btn--ghost" href="#resume">
+                <FileTextIcon size={15} />
+                View résumé
               </a>
             </div>
           </div>

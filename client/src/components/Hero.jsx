@@ -3,7 +3,7 @@ import { personal, experiences, stats, coreStack } from '../data/portfolio';
 import {
   ArrowRightIcon,
   ClockIcon,
-  DownloadIcon,
+  FileTextIcon,
   GithubIcon,
   LinkedinIcon,
   MailIcon,
@@ -67,9 +67,9 @@ export default function Hero() {
               Get in touch
               <ArrowRightIcon size={15} />
             </a>
-            <a className="btn btn--ghost" href={personal.resumeUrl} download>
-              <DownloadIcon size={15} />
-              Download résumé
+            <a className="btn btn--ghost" href="#resume">
+              <FileTextIcon size={15} />
+              View résumé
             </a>
 
             <div className="hero__socials">

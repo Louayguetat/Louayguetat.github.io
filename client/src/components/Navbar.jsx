@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { personal } from '../data/portfolio';
 import { useTheme } from '../hooks/useTheme';
-import { DownloadIcon, MoonIcon, SunIcon } from './Icons';
+import { FileTextIcon, MoonIcon, SunIcon } from './Icons';
 import './Navbar.css';
 
 const navLinks = [
@@ -87,8 +87,8 @@ export default function Navbar() {
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
           </button>
 
-          <a className="navbar__resume" href={personal.resumeUrl} download>
-            <DownloadIcon size={15} />
+          <a className="navbar__resume" href="#resume" onClick={() => handleNav('#resume')}>
+            <FileTextIcon size={15} />
             Résumé
           </a>
 
@@ -119,10 +119,10 @@ export default function Navbar() {
           </button>
         ))}
         <div className="navbar__drawer-actions">
-          <a className="btn btn--ghost" href={personal.resumeUrl} download>
-            <DownloadIcon size={15} />
+          <button className="btn btn--ghost" onClick={() => handleNav('#resume')}>
+            <FileTextIcon size={15} />
             Résumé
-          </a>
+          </button>
           <a className="btn btn--primary" href={`mailto:${personal.email}`}>
             Hire me
           </a>
