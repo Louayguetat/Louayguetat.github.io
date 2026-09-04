@@ -6,30 +6,46 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#080b12" media="(prefers-color-scheme: dark)" />
 
-    <title>Louay Guetat — Full Stack Engineer</title>
+    <!-- ── Primary SEO ───────────────────────────────────────────────────────
+         When the site moves to a custom domain, update the absolute URLs here
+         plus robots.txt, sitemap.xml, and "homepage" in package.json. -->
+    <title>Louay Guetat — Full Stack Engineer | React, Python, AWS</title>
     <meta
       name="description"
       content="Louay Guetat is a Full Stack Engineer with 2+ years shipping production web, mobile, and cloud software for a US fintech startup. React, TypeScript, Python, FastAPI, AWS. Open to relocation worldwide across Europe, the Americas, and Asia."
     />
     <meta name="author" content="Louay Guetat" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta
       name="keywords"
-      content="Louay Guetat, Full Stack Engineer, React, TypeScript, Python, FastAPI, AWS, Fintech, Tunis, Portfolio"
+      content="Louay Guetat, Guetat Louay, Louay Guetat portfolio, Louay Guetat engineer, Full Stack Engineer, Software Engineer, React Developer, Python Developer, TypeScript, FastAPI, AWS, Fintech, Tunis, Tunisia"
     />
+    <link rel="canonical" href="https://louay-guetat.github.io/" />
 
-    <!-- Open Graph / social preview -->
+    <!-- ── Open Graph / social preview ──────────────────────────────────────
+         Drop a 1200x630 PNG at client/public/og-image.png to enable the
+         image preview when the link is shared. -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Louay Guetat" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://louay-guetat.github.io/" />
     <meta property="og:title" content="Louay Guetat — Full Stack Engineer" />
     <meta
       property="og:description"
       content="Full Stack Engineer building web, mobile, and cloud products for startups. React, TypeScript, Python, FastAPI, AWS."
     />
+    <meta property="og:image" content="https://louay-guetat.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Louay Guetat, Full Stack Engineer" />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Louay Guetat — Full Stack Engineer" />
     <meta
       name="twitter:description"
       content="Full Stack Engineer building web, mobile, and cloud products for startups."
     />
+    <meta name="twitter:image" content="https://louay-guetat.github.io/og-image.png" />
 
     <link
       rel="icon"
@@ -42,6 +58,83 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- ── Structured data ──────────────────────────────────────────────────
+         Tells search engines this site *is* the person "Louay Guetat", which
+         is what makes it surface for searches on the name. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://louay-guetat.github.io/#louay-guetat",
+        "name": "Louay Guetat",
+        "alternateName": "Guetat Louay",
+        "givenName": "Louay",
+        "familyName": "Guetat",
+        "jobTitle": "Full Stack Engineer",
+        "description": "Full Stack Engineer with 2+ years shipping production web, mobile, and cloud software. React, TypeScript, Python, FastAPI, and AWS.",
+        "url": "https://louay-guetat.github.io/",
+        "image": "https://louay-guetat.github.io/og-image.png",
+        "email": "louay.guetat1@gmail.com",
+        "nationality": { "@type": "Country", "name": "Tunisia" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tunis",
+          "addressCountry": "TN"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Alpha Momentum",
+          "url": "https://alphamomentum.ai"
+        },
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "ESPRIT",
+            "description": "Computer Engineering, Data Science"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "ESSECT",
+            "description": "Bachelor of Computer Science"
+          }
+        ],
+        "knowsAbout": [
+          "Full Stack Development",
+          "React",
+          "TypeScript",
+          "Python",
+          "FastAPI",
+          "Node.js",
+          "React Native",
+          "AWS",
+          "PostgreSQL",
+          "MongoDB",
+          "Docker",
+          "LangChain",
+          "Large Language Models",
+          "Machine Learning",
+          "Fintech"
+        ],
+        "knowsLanguage": ["Arabic", "English", "French"],
+        "sameAs": [
+          "https://www.linkedin.com/in/guetat-louay",
+          "https://github.com/Louay-Guetat",
+          "https://github.com/Louayguetat"
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Louay Guetat — Full Stack Engineer",
+        "url": "https://louay-guetat.github.io/",
+        "inLanguage": "en",
+        "about": { "@id": "https://louay-guetat.github.io/#louay-guetat" }
+      }
+    </script>
 
     <!-- Resolve the theme before first paint so the page never flashes -->
     <script>
@@ -60,7 +153,11 @@
     </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to view this portfolio.</noscript>
+    <noscript>
+      Louay Guetat — Full Stack Engineer based in Tunis, Tunisia. 2+ years shipping production
+      web, mobile, and cloud software with React, TypeScript, Python, FastAPI, and AWS. Open to
+      relocation worldwide. Contact: louay.guetat1@gmail.com
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

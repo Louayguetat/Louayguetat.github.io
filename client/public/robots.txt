@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://louay-guetat.github.io/sitemap.xml
