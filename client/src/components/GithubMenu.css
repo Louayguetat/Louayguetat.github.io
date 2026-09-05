@@ -1,0 +1,120 @@
+.ghmenu {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Padding rather than margin: it bridges the gap between trigger and panel so
+   the pointer can travel across without leaving the menu. */
+.ghmenu__anchor {
+  position: absolute;
+  z-index: 60;
+}
+
+.ghmenu--bottom .ghmenu__anchor { top: 100%; padding-top: 8px; }
+.ghmenu--top .ghmenu__anchor { bottom: 100%; padding-bottom: 8px; }
+.ghmenu--start .ghmenu__anchor { left: 0; }
+.ghmenu--end .ghmenu__anchor { right: 0; }
+
+.ghmenu__panel {
+  width: min(272px, calc(100vw - 2.5rem));
+  padding: 0.35rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.ghmenu--bottom .ghmenu__panel { animation: ghmenuDown 0.16s var(--ease); }
+.ghmenu--top .ghmenu__panel { animation: ghmenuUp 0.16s var(--ease); }
+
+@keyframes ghmenuDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ghmenuUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ghmenu__title {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 0.3rem 0.5rem 0.4rem;
+}
+
+.ghmenu__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  transition: background 0.15s var(--ease);
+}
+
+.ghmenu__item:hover { background: var(--bg-subtle); }
+
+.ghmenu__mark {
+  display: flex;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: color 0.15s var(--ease);
+}
+
+.ghmenu__item:hover .ghmenu__mark { color: var(--accent); }
+
+.ghmenu__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.ghmenu__top {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ghmenu__handle {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.15s var(--ease);
+}
+
+.ghmenu__label {
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0 0.32rem;
+  white-space: nowrap;
+}
+
+.ghmenu__label--active {
+  color: var(--green);
+  background: var(--green-dim);
+  border-color: var(--green-line);
+}
+
+.ghmenu__item:hover .ghmenu__handle { color: var(--accent); }
+
+.ghmenu__note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.ghmenu__go {
+  display: flex;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.15s var(--ease);
+}
+
+.ghmenu__item:hover .ghmenu__go,
+.ghmenu__item:focus-visible .ghmenu__go { opacity: 1; }

@@ -1,3 +1,21 @@
+/* Both GitHub accounts, active one first, so `personal.github` reads from it
+   wherever a single link is enough. The study account is no longer used but most
+   of the project repos linked below still live on it. */
+export const githubAccounts = [
+  {
+    handle: 'Louayguetat',
+    url: 'https://github.com/Louayguetat',
+    label: 'Active',
+    note: 'Where I work now. Client projects and this portfolio.',
+  },
+  {
+    handle: 'Louay-Guetat',
+    url: 'https://github.com/Louay-Guetat',
+    label: 'Archive',
+    note: 'Older student account. Most of my project repos are still here.',
+  },
+];
+
 export const personal = {
   name: 'Louay Guetat',
   title: 'Full Stack Engineer',
@@ -11,7 +29,7 @@ export const personal = {
   whatsapp: '21655160398',
   timezone: 'GMT+1, used to working across time zones',
   linkedin: 'https://www.linkedin.com/in/guetat-louay',
-  github: 'https://github.com/Louay-Guetat',
+  github: githubAccounts[0].url,
   resumeUrl: '/CV/FullStack/Louay_Guetat_ENG.pdf',
 };
 

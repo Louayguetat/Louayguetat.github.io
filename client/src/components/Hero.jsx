@@ -1,6 +1,7 @@
 import React from 'react';
 import { personal, experiences, stats, coreStack } from '../data/portfolio';
 import { ClockIcon, FileTextIcon, GithubIcon, LinkedinIcon, MailIcon, PinIcon } from './Icons';
+import GithubMenu from './GithubMenu';
 import './Hero.css';
 
 const currentRole = experiences.find((exp) => exp.current);
@@ -58,15 +59,14 @@ export default function Hero() {
               >
                 <LinkedinIcon size={17} />
               </a>
-              <a
-                href={personal.github}
-                target="_blank"
-                rel="noreferrer"
-                className="hero__social"
-                aria-label="GitHub"
+              <GithubMenu
+                triggerClassName="hero__social"
+                triggerLabel="GitHub, two accounts"
+                placement="bottom"
+                align="start"
               >
                 <GithubIcon size={17} />
-              </a>
+              </GithubMenu>
               <a href={`mailto:${personal.email}`} className="hero__social" aria-label="Email">
                 <MailIcon size={17} />
               </a>

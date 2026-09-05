@@ -9,6 +9,7 @@ import {
   LinkedinIcon,
   WhatsappIcon,
 } from './Icons';
+import GithubMenu from './GithubMenu';
 import './Contact.css';
 
 export default function Contact() {
@@ -23,7 +24,7 @@ export default function Contact() {
 
   const channels = [
     { label: 'LinkedIn', sub: 'guetat-louay', href: personal.linkedin, icon: <LinkedinIcon size={17} /> },
-    { label: 'GitHub', sub: 'Louay-Guetat', href: personal.github, icon: <GithubIcon size={17} /> },
+    { label: 'GitHub', sub: 'Two accounts', menu: true, icon: <GithubIcon size={17} /> },
     {
       label: 'WhatsApp',
       sub: personal.phone,
@@ -66,15 +67,27 @@ export default function Contact() {
           </div>
 
           <div className="contact__channels">
-            {channels.map(({ label, sub, href, icon }) => (
-              <a key={label} href={href} target="_blank" rel="noreferrer" className="channel">
-                <span className="channel__icon">{icon}</span>
-                <span className="channel__text">
-                  <span className="channel__label">{label}</span>
-                  <span className="channel__sub">{sub}</span>
-                </span>
-              </a>
-            ))}
+            {channels.map(({ label, sub, href, icon, menu }) => {
+              const body = (
+                <>
+                  <span className="channel__icon">{icon}</span>
+                  <span className="channel__text">
+                    <span className="channel__label">{label}</span>
+                    <span className="channel__sub">{sub}</span>
+                  </span>
+                </>
+              );
+
+              return menu ? (
+                <GithubMenu key={label} triggerClassName="channel" placement="bottom" align="start">
+                  {body}
+                </GithubMenu>
+              ) : (
+                <a key={label} href={href} target="_blank" rel="noreferrer" className="channel">
+                  {body}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

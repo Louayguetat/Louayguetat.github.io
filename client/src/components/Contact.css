@@ -71,8 +71,15 @@
   transition: color 0.15s var(--ease);
 }
 
-.channel:first-child { padding-top: 0; }
+/* Scoped to the direct child so it doesn't also match the GitHub trigger, which
+   is the first child of its own .ghmenu wrapper. */
+.contact__channels > .channel:first-child { padding-top: 0; }
 .channel:hover { color: var(--accent); }
+
+/* The GitHub row is a button inside .ghmenu, so it needs to fill the column the
+   way the sibling anchors do. */
+.contact__channels > .ghmenu { display: flex; }
+.contact__channels .ghmenu > .channel { width: 100%; text-align: left; }
 
 .channel__icon {
   display: flex;

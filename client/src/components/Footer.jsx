@@ -1,6 +1,7 @@
 import React from 'react';
 import { personal } from '../data/portfolio';
 import { GithubIcon, LinkedinIcon, MailIcon } from './Icons';
+import GithubMenu from './GithubMenu';
 import './Footer.css';
 
 export default function Footer() {
@@ -18,9 +19,9 @@ export default function Footer() {
           <a href={personal.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
             <LinkedinIcon size={16} />
           </a>
-          <a href={personal.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+          <GithubMenu triggerLabel="GitHub, two accounts" placement="top" align="end">
             <GithubIcon size={16} />
-          </a>
+          </GithubMenu>
           <a href={`mailto:${personal.email}`} aria-label="Email">
             <MailIcon size={16} />
           </a>
